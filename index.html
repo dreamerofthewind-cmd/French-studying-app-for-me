@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Français — 1万語マスター</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+JP:wght@300;400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f7fb;
+  --bg2: #ffffff;
+  --bg3: #edeff5;
+  --primary: #4257b2;
+  --primary-light: #5d72c9;
+  --primary-dark: #2e3e8c;
+  --accent: #ffcd1f;
+  --accent-light: #ffe070;
+  --gold: #ffcd1f;
+  --gold-light: #ffe070;
+  --gold-soft: #fff4c4;
+  --gold-dim: #e8b800;
+  --text: #303545;
+  --text2: #586380;
+  --text3: #939bb0;
+  --green: #4caf7d;
+  --red: #e74c3c;
+  --blue: #4257b2;
+  --orange: #ff8a3d;
+  --border: #dde0e8;
+  --border2: #c5cad6;
+  --shadow-sm: 0 1px 2px rgba(48,53,69,0.06);
+  --shadow-md: 0 2px 8px rgba(48,53,69,0.08);
+  --shadow-lg: 0 4px 16px rgba(48,53,69,0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+/* SVG icons */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+}
+.icon-lg { width: 24px; height: 24px; }
+.icon-xl { width: 28px; height: 28px; }
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+#app { min-height: 100vh; padding-bottom: 80px; }
+
+/* ===== HEADER ===== */
+.app-header {
+  padding: 28px 20px 20px;
+  text-align: center;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.app-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  color: var(--primary);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.app-subtitle {
+  font-size: 13px;
+  color: var(--text2);
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+/* ===== HOME ===== */
+.home {
+  padding: 24px 20px;
+}
+
+.progress-banner {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 20px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.progress-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.03em;
+}
+.progress-of { font-size: 16px; color: var(--text2); font-weight: 600; }
+.progress-label {
+  font-size: 12px;
+  color: var(--text3);
+  letter-spacing: 0.02em;
+  margin-top: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.progress-bar {
+  height: 8px;
+  background: var(--bg3);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 14px;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.mode-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.mode-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.2s, border-color 0.2s;
+  font-family: inherit;
+  color: var(--text);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+.mode-btn:active { transform: translateY(1px); }
+.mode-btn:hover { box-shadow: var(--shadow-md); border-color: var(--border2); }
+.mode-btn.primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.mode-btn.primary .mode-icon {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.25);
+  color: #fff;
+}
+.mode-btn.primary .mode-title { color: #fff; }
+.mode-btn.primary .mode-desc { color: rgba(255,255,255,0.85); }
+.mode-btn.primary .mode-arrow { color: #fff; }
+.mode-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+.mode-info { flex: 1; }
+.mode-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.mode-desc { font-size: 13px; color: var(--text2); line-height: 1.4; font-weight: 500; }
+.mode-arrow { color: var(--text3); display: flex; align-items: center; }
+
+.section-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text2);
+  margin: 32px 0 14px;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.section-collapsible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 0;
+}
+.section-collapsible:hover { color: var(--text); }
+.collapse-icon {
+  color: var(--text3);
+  transition: transform 0.2s;
+}
+.section-collapsible.expanded .collapse-icon {
+  transform: rotate(180deg);
+}
+.tool-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deck-list { display: flex; flex-direction: column; gap: 10px; }
+.deck-row {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.1s;
+  box-shadow: var(--shadow-sm);
+}
+.deck-row:hover { box-shadow: var(--shadow-md); border-color: var(--border2); }
+.deck-row:active { transform: translateY(1px); }
+.deck-row.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.deck-row.disabled:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--border);
+}
+
+/* Mastery deck variants */
+.deck-row.mastery-1 { border-left: 4px solid var(--red); }
+.deck-row.mastery-2 { border-left: 4px solid var(--orange); }
+.deck-row.mastery-3 { border-left: 4px solid var(--accent); }
+.deck-row.mastery-4 { border-left: 4px solid var(--green); }
+.deck-row.mega { border-left: 4px solid var(--primary); }
+.deck-row.phrase { border-left: 4px solid var(--primary-light); }
+
+.deck-icon-square {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 13px;
+}
+.icon-bg-red { background: #fde4e1; color: var(--red); }
+.icon-bg-orange { background: #ffe8d5; color: #b35a00; }
+.icon-bg-yellow { background: #fff4c4; color: #957800; }
+.icon-bg-green { background: #d4eddc; color: #1b6e3d; }
+.icon-bg-blue { background: #e6e9f5; color: var(--primary); }
+
+.empty-deck-hint {
+  background: var(--bg2);
+  border: 1px dashed var(--border2);
+  border-radius: 10px;
+  padding: 20px 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.deck-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: var(--primary);
+  width: 42px;
+  text-align: center;
+  flex-shrink: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.deck-info { flex: 1; min-width: 0; }
+.deck-title { font-size: 14px; color: var(--text); margin-bottom: 3px; font-weight: 600; }
+.deck-meta { font-size: 12px; color: var(--text2); font-weight: 500; }
+.deck-status {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.status-new { color: var(--primary); background: #e6e9f5; }
+.status-progress { color: #b35a00; background: #fff0d9; }
+.status-done { color: #1b6e3d; background: #d4eddc; }
+
+/* ===== STUDY SCREEN ===== */
+.study-screen {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 0;
+}
+.study-screen.active { display: flex; }
+
+.study-header {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+}
+.back-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.back-btn:hover { background: var(--border); color: var(--text); }
+.back-btn:active { background: var(--border2); }
+
+.study-info { flex: 1; }
+.study-title { font-size: 14px; color: var(--text); font-weight: 700; }
+.study-subtitle { font-size: 12px; color: var(--text2); margin-top: 2px; font-weight: 500; }
+.study-counter {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--primary);
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.study-progress-bar {
+  height: 6px;
+  background: var(--bg3);
+}
+.study-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+
+.study-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 24px;
+  overflow-y: auto;
+}
+
+.flashcard {
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 44px 28px;
+  text-align: center;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.flashcard:hover { box-shadow: var(--shadow-lg); }
+.flashcard:active { transform: translateY(1px); }
+
+.card-rank {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--text3);
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+.card-pos {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--primary);
+  background: #e6e9f5;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.card-level-badge {
+  position: absolute;
+  bottom: 14px;
+  left: 18px;
+  font-size: 11px;
+  color: var(--text2);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.card-word {
+  font-family: 'Inter', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 18px 0 24px;
+  line-height: 1.15;
+  word-wrap: break-word;
+  letter-spacing: -0.02em;
+}
+.card-word-phrase {
+  font-size: 26px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.audio-btn {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: transform 0.12s, background 0.15s;
+}
+.audio-btn:hover { background: var(--border); }
+.audio-btn:active { transform: scale(0.92); }
+.audio-btn.playing {
+  animation: pulse 0.8s ease-in-out;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.card-back-content {
+  display: none;
+  margin-top: 16px;
+}
+.card-back-content.shown { display: block; animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.translations { margin-bottom: 16px; }
+.translation-item {
+  font-size: 22px;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.translation-item:not(:first-child) {
+  font-size: 17px;
+  color: var(--text2);
+  font-weight: 500;
+}
+.translation-item:not(:first-child)::before {
+  content: '';
+}
+
+.book-context {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.book-context-label {
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.book-sentence {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  text-align: left;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.book-sentence-truncated { cursor: pointer; color: var(--primary); font-size: 13px; font-weight: 600; }
+.book-sentence-truncated:hover { color: var(--primary-dark); }
+.book-source {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 8px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.tap-hint {
+  font-size: 13px;
+  color: var(--text3);
+  margin-top: 18px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+/* Action buttons */
+.study-actions {
+  width: 100%;
+  max-width: 440px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+.action-btn {
+  padding: 22px 16px;
+  border: 2px solid;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 0.1s, background 0.15s, box-shadow 0.2s;
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 76px;
+}
+.action-btn:hover { box-shadow: var(--shadow-md); }
+.action-btn:active { transform: translateY(1px); }
+
+.btn-no { color: var(--red); border-color: var(--red); }
+.btn-no:hover { background: rgba(231,76,60,0.06); }
+.btn-yes { color: var(--green); border-color: var(--green); }
+.btn-yes:hover { background: rgba(76,175,125,0.06); }
+
+/* Round indicator (2周目とか) */
+.round-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-left: 8px;
+  letter-spacing: 0.02em;
+}
+
+/* ===== END SCREENS ===== */
+.end-screen {
+  text-align: center;
+  padding: 60px 24px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.end-icon { font-size: 64px; margin-bottom: 20px; }
+.end-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  color: var(--text);
+  font-weight: 800;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+.end-subtitle { font-size: 15px; color: var(--text2); line-height: 1.6; margin-bottom: 28px; font-weight: 500; }
+.end-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.end-stat-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+}
+.end-stat-label { font-size: 11px; color: var(--text2); margin-top: 6px; font-weight: 600; }
+
+.btn-primary-large {
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.01em;
+}
+.btn-primary-large:hover { background: var(--primary-dark); }
+.btn-primary-large:active { transform: translateY(1px); }
+.btn-secondary-large {
+  width: 100%;
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border2);
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-secondary-large:hover { background: var(--bg3); }
+.btn-secondary-large:active { background: var(--border); }
+
+/* ===== TAGS / FILTER MODAL ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(48,53,69,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--bg2);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 20px 22px 32px;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 -4px 24px rgba(48,53,69,0.15);
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.modal-handle {
+  width: 44px;
+  height: 4px;
+  background: var(--border2);
+  border-radius: 2px;
+  margin: 0 auto 18px;
+}
+.modal-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  color: var(--text);
+  font-weight: 800;
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+.modal-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.text-input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+.text-input:focus { border-color: var(--primary); }
+.text-input::placeholder { color: var(--text3); }
+textarea.text-input {
+  font-family: 'Inter', monospace;
+  line-height: 1.5;
+}
+
+.filter-group { margin-bottom: 22px; }
+.filter-group-title {
+  font-size: 12px;
+  color: var(--text2);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-chip {
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--text2);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-weight: 600;
+}
+.filter-chip:hover { border-color: var(--border2); color: var(--text); }
+.filter-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  color: var(--text2);
+}
+.empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.6; }
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--text);
+  border-radius: 10px;
+  padding: 14px 22px;
+  font-size: 14px;
+  color: #fff;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 200;
+  font-weight: 600;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (min-width: 768px) {
+  .home { max-width: 520px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===== HOME ===== -->
+  <div id="screen-home">
+    <div class="app-header">
+      <div class="app-title">Français</div>
+      <div class="app-subtitle">10,000語マスター</div>
+    </div>
+
+    <div class="home">
+      <div class="progress-banner">
+        <span class="progress-num" id="home-mastered">0</span>
+        <span class="progress-of" id="home-total">/ 300 語</span>
+        <div class="progress-label">習得済み</div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="home-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="mode-grid">
+        <button class="mode-btn primary" onclick="startReview()">
+          <div class="mode-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <div class="mode-info">
+            <div class="mode-title">復習</div>
+            <div class="mode-desc"><span id="due-count">0</span>枚が今日の期限</div>
+          </div>
+          <div class="mode-arrow">
+            <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </button>
+      </div>
+
+      <div class="section-title">習得度別デッキ</div>
+      <div class="deck-list" id="mastery-deck-list"></div>
+
+      <div class="section-title">巨大デッキ（一気に確認）</div>
+      <div class="deck-list" id="mega-deck-list"></div>
+
+      <div class="section-title">文章デッキ</div>
+      <div class="deck-list" id="phrase-deck-list"></div>
+
+      <div class="section-title section-collapsible" onclick="toggleSection('freq-decks')">
+        <span>頻度順デッキ（新規学習用）</span>
+        <svg class="icon collapse-icon" id="freq-decks-icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="deck-list" id="deck-list" style="display:none"></div>
+
+      <div class="section-title section-collapsible" onclick="toggleSection('tools')">
+        <span>ツール</span>
+        <svg class="icon collapse-icon" id="tools-icon" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="tool-list" id="tools" style="display:none">
+        <button class="mode-btn" onclick="openFilterModal()">
+          <div class="mode-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+          </div>
+          <div class="mode-info">
+            <div class="mode-title">カスタムフィルタ</div>
+            <div class="mode-desc">レベル・デッキ・タグを自由に組み合わせ</div>
+          </div>
+          <div class="mode-arrow">
+            <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </button>
+        <button class="mode-btn" onclick="openImportModal()">
+          <div class="mode-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M4 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>
+          </div>
+          <div class="mode-info">
+            <div class="mode-title">Apple Booksハイライトを取り込む</div>
+            <div class="mode-desc">テスト投入もここから</div>
+          </div>
+          <div class="mode-arrow">
+            <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </button>
+        <button class="mode-btn" onclick="openAddPhraseModal()">
+          <div class="mode-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div class="mode-info">
+            <div class="mode-title">文章を手動で追加</div>
+            <div class="mode-desc">自分の文章を文章デッキへ</div>
+          </div>
+          <div class="mode-arrow">
+            <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </button>
+        <button class="mode-btn" onclick="openSettingsModal()">
+          <div class="mode-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <div class="mode-info">
+            <div class="mode-title">設定</div>
+            <div class="mode-desc"><span id="storage-mode-display">ローカルモード</span></div>
+          </div>
+          <div class="mode-arrow">
+            <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M9 6l6 6-6 6"/></svg>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STUDY SCREEN ===== -->
+  <div id="screen-study" class="study-screen">
+    <div class="study-header">
+      <button class="back-btn" onclick="confirmExit()"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <div class="study-info">
+        <div class="study-title" id="study-title">学習中</div>
+        <div class="study-subtitle" id="study-subtitle"></div>
+      </div>
+      <div class="study-counter" id="study-counter">0/0</div>
+    </div>
+    <div class="study-progress-bar">
+      <div class="study-progress-fill" id="study-progress-fill" style="width:0%"></div>
+    </div>
+    <div class="study-body" id="study-body"></div>
+  </div>
+
+  <!-- ===== FILTER MODAL ===== -->
+  <div class="modal-overlay" id="filter-modal" onclick="if(event.target===this)closeFilterModal()">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-title">前倒し復習</div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">習得度レベル</div>
+        <div class="filter-chips" id="level-chips"></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">ミニデッキ（学習済みのみ）</div>
+        <div class="filter-chips" id="deck-chips"></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">タグ</div>
+        <div class="filter-chips" id="tag-chips">
+          <button class="filter-chip" data-tag="struggling">苦戦中</button>
+          <button class="filter-chip" data-tag="all-learned">学習済み全て</button>
+        </div>
+      </div>
+
+      <button class="btn-primary-large" onclick="startFilteredReview()">
+        <span id="filter-count">0</span>枚で復習開始
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== KINDLE IMPORT MODAL ===== -->
+  <div class="modal-overlay" id="import-modal" onclick="if(event.target===this)closeImportModal()">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-title">Apple Booksハイライトを取り込む</div>
+      <p class="modal-desc">
+        Apple Booksでハイライトした単語や文章を取り込みます。<br>
+        Apple Booksでハイライトを長押し → 「共有」 → 「メモ」や「メール」にエクスポート → コピー、で取得できます。
+      </p>
+
+      <div class="filter-group">
+        <div class="filter-group-title">本のタイトル</div>
+        <input type="text" class="text-input" id="import-book" placeholder="例: Le Petit Prince" value="Le Petit Prince">
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">ハイライト（1行に1つ。短い=単語、長い=文章として扱われます）</div>
+        <textarea class="text-input" id="import-text" rows="8" placeholder="ineffable
+soleil
+amour
+Tu deviens responsable pour toujours de ce que tu as apprivoisé.
+On ne voit bien qu'avec le cœur."></textarea>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">英訳（オプション・1行ずつ対応・空白可）</div>
+        <textarea class="text-input" id="import-translations" rows="8" placeholder="ineffable
+sun
+love
+You become responsible forever for what you have tamed.
+One sees clearly only with the heart."></textarea>
+      </div>
+
+      <button class="btn-primary-large" onclick="runImport()">取り込む</button>
+      <button class="btn-secondary-large" onclick="closeImportModal()" style="margin-top:8px">キャンセル</button>
+    </div>
+  </div>
+
+  <!-- ===== ADD PHRASE MODAL ===== -->
+  <div class="modal-overlay" id="phrase-modal" onclick="if(event.target===this)closePhraseModal()">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-title">文章を追加</div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">フランス語の文章</div>
+        <textarea class="text-input" id="phrase-fr" rows="3" placeholder="Je voudrais un café, s'il vous plaît."></textarea>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">英訳（複数ある場合は改行区切り）</div>
+        <textarea class="text-input" id="phrase-en" rows="3" placeholder="I would like a coffee, please."></textarea>
+      </div>
+
+      <button class="btn-primary-large" onclick="addManualPhrase()">追加</button>
+      <button class="btn-secondary-large" onclick="closePhraseModal()" style="margin-top:8px">キャンセル</button>
+    </div>
+  </div>
+
+  <!-- ===== SETTINGS MODAL ===== -->
+  <div class="modal-overlay" id="settings-modal" onclick="if(event.target===this)closeSettingsModal()">
+    <div class="modal">
+      <div class="modal-handle"></div>
+      <div class="modal-title">設定</div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">ストレージモード</div>
+        <div id="settings-mode-info" class="modal-desc" style="margin-bottom:12px"></div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-title">Cloudflare Workers API URL</div>
+        <p class="modal-desc" style="margin-bottom:8px">
+          空欄ならローカルモード（ブラウザ内に保存）。<br>
+          URLを設定すると同期モードになり、すべてのデバイスで進捗が共有されます。
+        </p>
+        <input type="text" class="text-input" id="settings-api-url" placeholder="https://francais-api.YOUR-SUBDOMAIN.workers.dev">
+      </div>
+
+      <button class="btn-primary-large" onclick="saveSettings()">保存して再読み込み</button>
+      <button class="btn-secondary-large" onclick="closeSettingsModal()" style="margin-top:8px">キャンセル</button>
+
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+        <div class="filter-group-title" style="color:var(--red);margin-bottom:8px">危険な操作</div>
+        <button class="btn-secondary-large" onclick="resetLocalData()" style="color:var(--red);border-color:var(--red)">ローカルデータをリセット</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="seed-data.js"></script>
+<script>
+// ===========================================================
+// STATE
+// ===========================================================
+let cards = []; // 全カードの実体
+let currentSession = null; // 現在の学習セッション
+let selectedFilters = { levels: [], decks: [], tags: [] };
+
+const STORAGE_KEY = 'francais_cards_v4';
+const META_KEY = 'francais_meta_v3';
+const API_URL_KEY = 'francais_api_url';
+const SETTINGS_KEY = 'francais_settings';
+
+// ===========================================================
+// STORAGE ADAPTER (LOCAL or API)
+// ===========================================================
+const Storage = {
+  // モード判定: APIのURLがあればAPIモード
+  isApiMode() {
+    const url = localStorage.getItem(API_URL_KEY);
+    return !!(url && url.trim());
+  },
+  getApiUrl() {
+    return (localStorage.getItem(API_URL_KEY) || '').replace(/\/$/, '');
+  },
+  setApiUrl(url) {
+    if (url && url.trim()) {
+      localStorage.setItem(API_URL_KEY, url.trim());
+    } else {
+      localStorage.removeItem(API_URL_KEY);
+    }
+  },
+
+  // ============== LOAD CARDS ==============
+  async loadAll() {
+    if (this.isApiMode()) {
+      const r = await fetch(this.getApiUrl() + '/api/cards');
+      if (!r.ok) throw new Error(`API ${r.status}`);
+      const data = await r.json();
+      // APIから来るカードをUI用に正規化
+      return (data.cards || []).map(c => ({
+        ...c,
+        kind: c.type === 'phrase' ? 'phrase' : 'word',
+        reviewHistory: c.reviewHistory || [],
+      }));
+    } else {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        try { return JSON.parse(raw); } catch(e) {}
+      }
+      return null;
+    }
+  },
+
+  // ============== SAVE (LOCAL ONLY) ==============
+  saveLocal(cardsData) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cardsData));
+  },
+
+  // ============== SUBMIT REVIEW ==============
+  async submitReview(cardId, roundsToCorrect) {
+    if (this.isApiMode()) {
+      const r = await fetch(this.getApiUrl() + `/api/cards/${cardId}/review`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ roundsToCorrect }),
+      });
+      if (!r.ok) throw new Error(`Review API ${r.status}`);
+      return await r.json();
+    } else {
+      // ローカル: applySRSはこの後の処理で実行される
+      return null;
+    }
+  },
+
+  // ============== ADD CARDS BULK (Kindle import) ==============
+  async addCardsBulk(cardsToAdd, book) {
+    if (this.isApiMode()) {
+      const r = await fetch(this.getApiUrl() + '/api/cards/bulk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cards: cardsToAdd, book }),
+      });
+      if (!r.ok) throw new Error(`Bulk API ${r.status}`);
+      return await r.json();
+    }
+    return null; // ローカルモードは別処理
+  },
+
+  // ============== ADD SINGLE CARD ==============
+  async addCard(card) {
+    if (this.isApiMode()) {
+      const r = await fetch(this.getApiUrl() + '/api/cards', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(card),
+      });
+      if (!r.ok) throw new Error(`Add API ${r.status}`);
+      return await r.json();
+    }
+    return null;
+  },
+};
+
+// ===========================================================
+// CARD MODEL
+// ===========================================================
+function createCardFromSeed(seed) {
+  return {
+    id: seed.id,
+    kind: 'word',
+    word: seed.word,
+    translations: seed.translations,
+    pos: seed.pos,
+    rank: seed.rank,
+    tags: [
+      `kind:word`,
+      `frequency:rank-${seed.rank}`,
+      `frequency:top-${seed.rank <= 3000 ? '3000' : seed.rank <= 5000 ? '5000' : '10000'}`,
+      `mini-deck:${String(seed.miniDeck).padStart(3, '0')}`,
+      `pos:${seed.pos}`,
+    ],
+    level: 1,
+    nextReviewAt: null,
+    encounters: 0,
+    reviewHistory: [],
+    bookSentences: [],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+// ===========================================================
+// SRS LOGIC (level 1-10)
+// ===========================================================
+const LEVEL_INTERVALS_MIN = [
+  null,    // index 0 unused
+  0,       // L1: immediate (same session)
+  10,      // L2: 10 min
+  60,      // L3: 1h
+  60*24,           // L4: 1day
+  60*24*3,         // L5: 3days
+  60*24*7,         // L6: 1week
+  60*24*14,        // L7: 2weeks
+  60*24*30,        // L8: 1month
+  60*24*90,        // L9: 3months
+  60*24*180,       // L10: 6months
+];
+
+function getLevelLabel(level) {
+  return ['', '初学', '初学+', '短期', '1日', '3日', '1週', '2週', '1月', '3月', '6月'][level] || '?';
+}
+
+// 周回数で⭕️になった回数 → レベル変化
+function applySRS(card, roundsToCorrect) {
+  let delta;
+  if (roundsToCorrect === 1) delta = 2;       // 一発正解
+  else if (roundsToCorrect === 2) delta = 1;  // 2周目で
+  else if (roundsToCorrect === 3) delta = 0;  // 3周目で
+  else delta = -1;                            // 4周目以上
+
+  card.level = Math.max(1, Math.min(10, card.level + delta));
+  const intervalMin = LEVEL_INTERVALS_MIN[card.level];
+  const next = new Date(Date.now() + intervalMin * 60 * 1000);
+  card.nextReviewAt = next.toISOString();
+  card.reviewHistory.push({ date: new Date().toISOString(), roundsToCorrect });
+  card.updatedAt = new Date().toISOString();
+}
+
+// ===========================================================
+// PERSISTENCE (Storage adapter経由)
+// ===========================================================
+function saveCards() {
+  // APIモードでは個別の操作APIで送るため、ここは何もしない
+  if (!Storage.isApiMode()) {
+    Storage.saveLocal(cards);
+  }
+}
+
+async function loadCards() {
+  try {
+    const loaded = await Storage.loadAll();
+    if (loaded && loaded.length > 0) {
+      cards = loaded;
+      return;
+    }
+  } catch (e) {
+    console.warn('loadAll failed, falling back to local seed:', e);
+    showToast('API接続失敗。ローカルモードで起動します');
+    Storage.setApiUrl(''); // APIモードを解除
+  }
+
+  // ローカル初期化
+  cards = window.SEED_VOCAB.map(createCardFromSeed);
+  // 文章カードもSEED_PHRASESから追加
+  if (window.SEED_PHRASES) {
+    window.SEED_PHRASES.forEach((p, i) => {
+      cards.push(createPhraseCard({
+        word: p.fr,
+        translations: p.en,
+        source: 'standard',
+      }));
+    });
+  }
+  Storage.saveLocal(cards);
+}
+
+function createPhraseCard({ word, translations, source = 'standard', book = '' }) {
+  const id = `phrase_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+  return {
+    id,
+    kind: 'phrase', // 単語カードと区別
+    word,
+    translations,
+    pos: 'phrase',
+    rank: null,
+    tags: [
+      `kind:phrase`,
+      `phrase-source:${source}`,
+      ...(book ? [`book:${book}`] : []),
+    ],
+    level: 1,
+    nextReviewAt: null,
+    encounters: 1,
+    reviewHistory: [],
+    bookSentences: book ? [{ book, sentence: word, addedAt: new Date().toISOString() }] : [],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+// ===========================================================
+// HOME RENDER
+// ===========================================================
+function renderHome() {
+  const wordCards = cards.filter(c => c.kind !== 'phrase');
+  const phraseCards = cards.filter(c => c.kind === 'phrase');
+  const total = wordCards.length;
+  const mastered = wordCards.filter(c => c.level >= 7).length;
+  document.getElementById('home-mastered').textContent = mastered;
+  document.getElementById('home-total').textContent = `/ ${total} 語`;
+  document.getElementById('home-progress-fill').style.width = total > 0 ? `${(mastered/total)*100}%` : '0%';
+
+  const now = new Date().toISOString();
+  const due = cards.filter(c => c.nextReviewAt && c.nextReviewAt <= now).length;
+  document.getElementById('due-count').textContent = due;
+
+  renderMasteryDecks(wordCards);
+  renderMegaDecks(wordCards, phraseCards);
+  renderPhraseDecks(phraseCards);
+  renderFrequencyDecks(wordCards);
+}
+
+// ===== 習得度別デッキ =====
+function renderMasteryDecks(wordCards) {
+  const studiedCards = wordCards.filter(c => c.nextReviewAt); // 学習開始済み
+  const buckets = [
+    { id: 'struggling', label: '苦手', desc: 'レベル1〜3', range: [1,3], cls: 'mastery-1', icon: 'icon-bg-red', iconText: '!' },
+    { id: 'learning', label: '学習中', desc: 'レベル4〜6', range: [4,6], cls: 'mastery-2', icon: 'icon-bg-orange', iconText: '◐' },
+    { id: 'stable', label: '安定', desc: 'レベル7〜9', range: [7,9], cls: 'mastery-3', icon: 'icon-bg-yellow', iconText: '◑' },
+    { id: 'mastered', label: 'マスター', desc: 'レベル10', range: [10,10], cls: 'mastery-4', icon: 'icon-bg-green', iconText: '●' },
+  ];
+
+  const list = document.getElementById('mastery-deck-list');
+  if (studiedCards.length === 0) {
+    list.innerHTML = `<div class="empty-deck-hint">頻度順デッキで学習を始めると、ここに習得度別のデッキが自動的に並びます。</div>`;
+    return;
+  }
+
+  list.innerHTML = buckets.map(b => {
+    const inBucket = studiedCards.filter(c => c.level >= b.range[0] && c.level <= b.range[1]);
+    const count = inBucket.length;
+    const disabled = count === 0;
+    return `
+      <div class="deck-row ${b.cls} ${disabled ? 'disabled' : ''}" ${disabled ? '' : `onclick="startMasteryDeck('${b.id}')"`}>
+        <div class="deck-icon-square ${b.icon}">${b.iconText}</div>
+        <div class="deck-info">
+          <div class="deck-title">${b.label}</div>
+          <div class="deck-meta">${b.desc} · ${count}語</div>
+        </div>
+        ${count > 0 ? `<div class="deck-status status-progress">${count}枚</div>` : ''}
+      </div>
+    `;
+  }).join('');
+}
+
+// ===== 巨大デッキ =====
+function renderMegaDecks(wordCards, phraseCards) {
+  const studied = wordCards.filter(c => c.nextReviewAt);
+  const all = cards.filter(c => c.nextReviewAt);
+  const top3000Studied = studied.filter(c => c.tags.includes('frequency:top-3000'));
+  const struggling = studied.filter(c => c.level <= 3);
+
+  const megas = [
+    {
+      id: 'all-studied',
+      label: '学習済みカード全て',
+      desc: '一気に確認したい時',
+      count: all.length,
+      action: () => startSession({
+        mode: 'mega',
+        title: '学習済みカード全て',
+        subtitle: `${all.length}枚を順に確認`,
+        queue: shuffle([...all]),
+        clearOnFinish: false,
+      }),
+    },
+    {
+      id: 'top3000-studied',
+      label: '頻出3000・学習済み',
+      desc: '基礎を総ざらい',
+      count: top3000Studied.length,
+      action: () => startSession({
+        mode: 'mega',
+        title: '頻出3000・学習済み',
+        subtitle: `${top3000Studied.length}枚`,
+        queue: shuffle([...top3000Studied]),
+        clearOnFinish: false,
+      }),
+    },
+    {
+      id: 'all-struggling',
+      label: '苦手カード全て',
+      desc: 'レベル1〜3を集中攻略',
+      count: struggling.length,
+      action: () => startSession({
+        mode: 'mega',
+        title: '苦手カード全て',
+        subtitle: `${struggling.length}枚`,
+        queue: shuffle([...struggling]),
+        clearOnFinish: false,
+      }),
+    },
+  ];
+
+  const list = document.getElementById('mega-deck-list');
+  list.innerHTML = megas.map(m => {
+    const disabled = m.count === 0;
+    return `
+      <div class="deck-row mega ${disabled ? 'disabled' : ''}" ${disabled ? '' : `onclick="megaActions['${m.id}']()"`}>
+        <div class="deck-icon-square icon-bg-blue">∞</div>
+        <div class="deck-info">
+          <div class="deck-title">${m.label}</div>
+          <div class="deck-meta">${m.desc}</div>
+        </div>
+        <div class="deck-status status-new">${m.count}枚</div>
+      </div>
+    `;
+  }).join('');
+
+  // expose to window
+  window.megaActions = {};
+  megas.forEach(m => { window.megaActions[m.id] = m.action; });
+}
+
+// ===== 文章デッキ =====
+function renderPhraseDecks(phraseCards) {
+  const standard = phraseCards.filter(c => c.tags.includes('phrase-source:standard'));
+  const fromBooks = phraseCards.filter(c =>
+    c.tags.includes('phrase-source:apple_books') || c.tags.includes('phrase-source:kindle')
+  );
+  const manual = phraseCards.filter(c => c.tags.includes('phrase-source:manual'));
+  const all = phraseCards;
+
+  const decks = [
+    { id: 'phrase-all', label: '文章すべて', desc: '全ての文章', count: all.length, list: all },
+    { id: 'phrase-standard', label: '標準・頻出構文', desc: 'よく使う表現', count: standard.length, list: standard },
+    { id: 'phrase-books', label: '本から取り込んだ文章', desc: 'Apple Booksハイライト由来', count: fromBooks.length, list: fromBooks },
+    { id: 'phrase-manual', label: '手動で追加した文章', desc: '自分で入力したもの', count: manual.length, list: manual },
+  ];
+
+  const list = document.getElementById('phrase-deck-list');
+  list.innerHTML = decks.map(d => {
+    const disabled = d.count === 0;
+    return `
+      <div class="deck-row phrase ${disabled ? 'disabled' : ''}" ${disabled ? '' : `onclick="phraseActions['${d.id}']()"`}>
+        <div class="deck-icon-square icon-bg-blue">"</div>
+        <div class="deck-info">
+          <div class="deck-title">${d.label}</div>
+          <div class="deck-meta">${d.desc}</div>
+        </div>
+        <div class="deck-status status-new">${d.count}文</div>
+      </div>
+    `;
+  }).join('');
+
+  window.phraseActions = {};
+  decks.forEach(d => {
+    window.phraseActions[d.id] = () => {
+      if (d.list.length === 0) return;
+      startSession({
+        mode: 'phrase',
+        title: d.label,
+        subtitle: `${d.list.length}文`,
+        queue: shuffle([...d.list]),
+        clearOnFinish: false,
+      });
+    };
+  });
+}
+
+// ===== 頻度順デッキ（折りたたみ） =====
+function renderFrequencyDecks(wordCards) {
+  const decks = groupByMiniDeck(wordCards);
+  const list = document.getElementById('deck-list');
+  list.innerHTML = decks.map(d => {
+    const startedCount = d.cards.filter(c => c.nextReviewAt).length;
+    const masteredCount = d.cards.filter(c => c.level >= 7).length;
+    let status, statusClass;
+    if (startedCount === 0) { status = '未着手'; statusClass = 'status-new'; }
+    else if (masteredCount === d.cards.length) { status = '習得'; statusClass = 'status-done'; }
+    else { status = `${startedCount}/${d.cards.length}`; statusClass = 'status-progress'; }
+    return `
+      <div class="deck-row" onclick="startSpecificDeck(${d.num})">
+        <div class="deck-num">#${String(d.num).padStart(2,'0')}</div>
+        <div class="deck-info">
+          <div class="deck-title">頻度 ${(d.num-1)*100+1}〜${d.num*100}位</div>
+          <div class="deck-meta">${d.cards.length}語 · 習得${masteredCount}語</div>
+        </div>
+        <div class="deck-status ${statusClass}">${status}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function startMasteryDeck(bucketId) {
+  const studied = cards.filter(c => c.nextReviewAt && c.kind !== 'phrase');
+  const ranges = { struggling: [1,3], learning: [4,6], stable: [7,9], mastered: [10,10] };
+  const labels = { struggling: '苦手', learning: '学習中', stable: '安定', mastered: 'マスター' };
+  const range = ranges[bucketId];
+  const queue = studied.filter(c => c.level >= range[0] && c.level <= range[1]);
+  if (queue.length === 0) { showToast('該当カードがありません'); return; }
+  shuffle(queue);
+  startSession({
+    mode: 'mastery',
+    title: `${labels[bucketId]}デッキ`,
+    subtitle: `${queue.length}語`,
+    queue,
+    clearOnFinish: false,
+  });
+}
+
+function groupByMiniDeck(wordCards) {
+  const map = {};
+  wordCards.forEach(c => {
+    const tag = c.tags.find(t => t.startsWith('mini-deck:'));
+    if (!tag) return;
+    const num = parseInt(tag.split(':')[1], 10);
+    if (!map[num]) map[num] = { num, cards: [] };
+    map[num].cards.push(c);
+  });
+  return Object.values(map).sort((a,b) => a.num - b.num);
+}
+
+function findNextDeck(decks) {
+  for (const d of decks) {
+    const masteredCount = d.cards.filter(c => c.level >= 7).length;
+    if (masteredCount < d.cards.length) return d;
+  }
+  return null;
+}
+
+function toggleSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  const icon = document.getElementById(sectionId + '-icon');
+  const titleEl = icon.parentElement;
+  if (section.style.display === 'none') {
+    section.style.display = '';
+    titleEl.classList.add('expanded');
+  } else {
+    section.style.display = 'none';
+    titleEl.classList.remove('expanded');
+  }
+}
+
+// ===========================================================
+// STUDY SESSION (共通エンジン)
+// ===========================================================
+function startSession(opts) {
+  // opts = { mode, title, subtitle, queue, deckNum?, clearOnFinish? }
+  if (!opts.queue || opts.queue.length === 0) {
+    showToast('カードがありません');
+    return;
+  }
+  currentSession = {
+    mode: opts.mode,
+    title: opts.title,
+    subtitle: opts.subtitle,
+    deckNum: opts.deckNum || null,
+    clearOnFinish: opts.clearOnFinish !== false,
+    initialQueue: [...opts.queue],
+    queue: [...opts.queue],
+    failedQueue: [],
+    round: 1,
+    cardRoundCount: new Map(),
+    correctOnce: new Set(),
+    revealed: false,
+    sessionStats: {
+      total: opts.queue.length,
+      correctRound1: 0,
+      correctRound2: 0,
+      correctRound3: 0,
+      correctLater: 0,
+    },
+  };
+  opts.queue.forEach(c => currentSession.cardRoundCount.set(c.id, 1));
+
+  document.getElementById('screen-home').style.display = 'none';
+  document.getElementById('screen-study').classList.add('active');
+  renderStudy();
+}
+
+function renderStudy() {
+  const s = currentSession;
+  document.getElementById('study-title').textContent = s.title;
+  // subtitle: 周回バッジは別要素に
+  document.getElementById('study-subtitle').innerHTML = escHtml(s.subtitle) +
+    (s.round > 1 ? `<span class="round-indicator">${s.round}周目</span>` : '');
+
+  if (s.queue.length === 0) {
+    if (s.failedQueue.length > 0) {
+      // 次の周回へ
+      s.round++;
+      s.queue = s.failedQueue;
+      s.failedQueue = [];
+      s.queue.forEach(c => {
+        const cur = s.cardRoundCount.get(c.id) || 1;
+        s.cardRoundCount.set(c.id, cur + 1);
+      });
+      renderStudy();
+      return;
+    } else {
+      finishSession();
+      return;
+    }
+  }
+
+  const card = s.queue[0];
+  const progress = ((s.initialQueue.length - s.queue.length) / s.initialQueue.length) * 100;
+
+  document.getElementById('study-counter').textContent =
+    `${s.initialQueue.length - s.queue.length + 1}/${s.initialQueue.length}`;
+  document.getElementById('study-progress-fill').style.width = progress + '%';
+
+  s.revealed = false;
+
+  const isPhrase = card.kind === 'phrase';
+  const showRank = !isPhrase && card.rank;
+  const showPos = !isPhrase && card.pos;
+
+  // Render card
+  const body = document.getElementById('study-body');
+  body.innerHTML = `
+    <div class="flashcard ${isPhrase ? 'flashcard-phrase' : ''}" id="flashcard" onclick="revealAnswer()">
+      ${showRank ? `<div class="card-rank">#${card.rank}</div>` : ''}
+      ${showPos ? `<div class="card-pos">${posLabel(card.pos)}</div>` : ''}
+      ${isPhrase ? `<div class="card-pos">phrase</div>` : ''}
+      <div class="card-level-badge">Lv${card.level} ${getLevelLabel(card.level)}</div>
+      <div class="card-word ${isPhrase ? 'card-word-phrase' : ''}">${escHtml(card.word)}</div>
+      <button class="audio-btn" id="audio-btn" onclick="event.stopPropagation();playAudio()" title="発音">
+        <svg viewBox="0 0 24 24" style="width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"><path d="M11 5L6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7" stroke-opacity="0.7"/><path d="M18.5 5.5a9 9 0 0 1 0 13" stroke-opacity="0.4"/></svg>
+      </button>
+      <div class="card-back-content" id="card-back">
+        <div class="translations">
+          ${card.translations.map(t => `<div class="translation-item">${escHtml(t)}</div>`).join('')}
+        </div>
+        ${renderBookSentences(card)}
+      </div>
+      <div class="tap-hint" id="tap-hint">タップして英訳を見る</div>
+    </div>
+    <div class="study-actions" id="study-actions" style="visibility:hidden">
+      <button class="action-btn btn-no" onclick="answerCard(false)" aria-label="わからない">
+        <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px;stroke-width:2.5"><path d="M6 6l12 12M6 18L18 6"/></svg>
+      </button>
+      <button class="action-btn btn-yes" onclick="answerCard(true)" aria-label="わかった">
+        <svg class="icon" viewBox="0 0 24 24" style="width:32px;height:32px;stroke-width:2.5"><path d="M5 12l5 5 9-11"/></svg>
+      </button>
+    </div>
+  `;
+
+  setTimeout(() => playAudio(), 250);
+}
+
+function posLabel(pos) {
+  return { v: 'verb', n: 'noun', adj: 'adj', adv: 'adv', prep: 'prep', conj: 'conj', pron: 'pron', art: 'art', num: 'num' }[pos] || pos;
+}
+
+function renderBookSentences(card) {
+  if (!card.bookSentences || card.bookSentences.length === 0) return '';
+  const first = card.bookSentences[0];
+  const more = card.bookSentences.length - 1;
+  const sentence = first.sentence;
+  const truncated = sentence.length > 120;
+  return `
+    <div class="book-context">
+      <div class="book-context-label">
+        <svg class="icon" viewBox="0 0 24 24" style="width:11px;height:11px;vertical-align:-1px"><path d="M4 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg>
+        例文
+      </div>
+      <div class="book-sentence" id="book-sentence">
+        ${escHtml(truncated ? sentence.substring(0, 120) + '...' : sentence)}
+      </div>
+      ${truncated ? `<div class="book-sentence-truncated" onclick="event.stopPropagation();expandSentence(this)">tap to see more</div>` : ''}
+      <div class="book-source">— ${escHtml(first.book)}${more > 0 ? ` · 他 ${more} 件の例文` : ''}</div>
+    </div>
+  `;
+}
+
+function expandSentence(el) {
+  const card = currentSession.queue[0];
+  const sent = el.previousElementSibling;
+  sent.textContent = card.bookSentences[0].sentence;
+  el.style.display = 'none';
+}
+
+function revealAnswer() {
+  if (currentSession.revealed) return;
+  currentSession.revealed = true;
+  document.getElementById('card-back').classList.add('shown');
+  document.getElementById('tap-hint').style.display = 'none';
+  document.getElementById('study-actions').style.visibility = 'visible';
+}
+
+async function answerCard(correct) {
+  const s = currentSession;
+  if (!s.revealed) return;
+
+  const card = s.queue.shift();
+  const round = s.cardRoundCount.get(card.id);
+
+  if (correct) {
+    s.correctOnce.add(card.id);
+
+    // ローカルでSRS適用（即座にUI反映）
+    applySRS(card, round);
+
+    // 統計
+    if (round === 1) s.sessionStats.correctRound1++;
+    else if (round === 2) s.sessionStats.correctRound2++;
+    else if (round === 3) s.sessionStats.correctRound3++;
+    else s.sessionStats.correctLater++;
+
+    // APIモードならサーバーにも送信（バックグラウンド、失敗してもUIブロックしない）
+    if (Storage.isApiMode()) {
+      Storage.submitReview(card.id, round).then(result => {
+        if (result && result.newLevel !== undefined) {
+          // サーバー計算と同期（DB信頼）
+          card.level = result.newLevel;
+          card.nextReviewAt = result.nextReviewAt;
+        }
+      }).catch(err => {
+        console.warn('Review sync failed:', err);
+      });
+    }
+  } else {
+    // ❌ → 次の周回に回す
+    s.failedQueue.push(card);
+  }
+
+  saveCards();
+  renderStudy();
+}
+
+function playAudio() {
+  const card = currentSession?.queue[0];
+  if (!card) return;
+
+  // R2の音声があればそれを優先
+  if (card.audioUrl) {
+    try {
+      const audio = new Audio(card.audioUrl);
+      audio.playbackRate = 0.95;
+      audio.play().catch(err => {
+        console.warn('Audio play failed, falling back to TTS:', err);
+        playBrowserTTS(card.word);
+      });
+      const btn = document.getElementById('audio-btn');
+      if (btn) {
+        btn.classList.remove('playing');
+        void btn.offsetWidth;
+        btn.classList.add('playing');
+      }
+      return;
+    } catch (e) {
+      console.warn('Audio fallback to TTS:', e);
+    }
+  }
+
+  // フォールバック: ブラウザ内蔵TTS
+  playBrowserTTS(card.word);
+}
+
+function playBrowserTTS(text) {
+  if (!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'fr-FR';
+  u.rate = 0.85;
+  speechSynthesis.speak(u);
+  const btn = document.getElementById('audio-btn');
+  if (btn) {
+    btn.classList.remove('playing');
+    void btn.offsetWidth;
+    btn.classList.add('playing');
+  }
+}
+
+function finishSession() {
+  const s = currentSession;
+  const stats = s.sessionStats;
+  const correct = stats.correctRound1 + stats.correctRound2 + stats.correctRound3 + stats.correctLater;
+
+  // モードに応じて「次へ」ボタンを決める
+  const nextAction = computeNextAction(s);
+
+  document.getElementById('study-body').innerHTML = `
+    <div class="end-screen">
+      <div class="end-icon">
+        <svg viewBox="0 0 64 64" style="width:64px;height:64px;stroke:var(--primary);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round">
+          <circle cx="32" cy="32" r="22" stroke-opacity="0.3"/>
+          <circle cx="32" cy="32" r="14" stroke-opacity="0.5"/>
+          <path d="M22 32l7 7 13-15" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <div class="end-title">${s.completedTitle || 'お疲れさまでした'}</div>
+      <div class="end-subtitle">
+        ${escHtml(s.title)} を完了。${correct}枚を学習結果に反映しました。
+      </div>
+      <div class="end-stats">
+        <div>
+          <div class="end-stat-num">${stats.correctRound1}</div>
+          <div class="end-stat-label">1周目で正解</div>
+        </div>
+        <div>
+          <div class="end-stat-num">${stats.correctRound2}</div>
+          <div class="end-stat-label">2周目で正解</div>
+        </div>
+        <div>
+          <div class="end-stat-num">${stats.correctRound3 + stats.correctLater}</div>
+          <div class="end-stat-label">3周目以降</div>
+        </div>
+      </div>
+      ${nextAction ? `<button class="btn-primary-large" onclick="(${nextAction.fn.toString()})()">${escHtml(nextAction.label)}</button>` : ''}
+      <button class="${nextAction ? 'btn-secondary-large' : 'btn-primary-large'}" onclick="exitToHome()">ホームへ戻る</button>
+    </div>
+  `;
+  document.getElementById('study-counter').textContent = '完了';
+  document.getElementById('study-progress-fill').style.width = '100%';
+}
+
+// 次のアクションを決定
+function computeNextAction(s) {
+  if (s.mode === 'new-deck' && s.deckNum) {
+    // 次のミニデッキへ
+    const nextNum = s.deckNum + 1;
+    const wordCards = cards.filter(c => c.kind !== 'phrase');
+    const decks = groupByMiniDeck(wordCards);
+    const nextDeck = decks.find(d => d.num === nextNum);
+    if (nextDeck) {
+      return {
+        label: `次のデッキへ進む（#${nextNum}）`,
+        fn: () => startSpecificDeck(nextNum),
+      };
+    }
+  }
+  if (s.mode === 'review') {
+    // まだ期限カードが残ってないかチェック
+    const now = new Date().toISOString();
+    const stillDue = cards.filter(c => c.nextReviewAt && c.nextReviewAt <= now);
+    if (stillDue.length > 0) {
+      return {
+        label: `さらに復習する（${stillDue.length}枚）`,
+        fn: () => startReview(),
+      };
+    }
+  }
+  return null;
+}
+
+function confirmExit() {
+  if (!currentSession || !currentSession.queue) {
+    exitToHome(); return;
+  }
+  if (currentSession.queue.length === 0 && currentSession.failedQueue.length === 0) {
+    exitToHome(); return;
+  }
+  if (confirm('セッションを終了しますか？\n途中までの結果は保存されます。')) {
+    exitToHome();
+  }
+}
+
+function exitToHome() {
+  currentSession = null;
+  document.getElementById('screen-study').classList.remove('active');
+  document.getElementById('screen-home').style.display = '';
+  renderHome();
+}
+
+// ===========================================================
+// LAUNCHERS
+// ===========================================================
+function startReview() {
+  const now = new Date().toISOString();
+  const dueCards = cards.filter(c => c.nextReviewAt && c.nextReviewAt <= now);
+
+  if (dueCards.length > 0) {
+    shuffle(dueCards);
+    startSession({
+      mode: 'review',
+      title: '復習',
+      subtitle: `期限カード ${dueCards.length}枚`,
+      queue: dueCards,
+    });
+    return;
+  }
+
+  // 期限切れゼロ → 学習済みがあれば前倒しで開始
+  const studied = cards.filter(c => c.nextReviewAt);
+  if (studied.length > 0) {
+    if (!confirm(`今日の期限カードはありません。\n学習済み ${studied.length}枚の前倒し復習を始めますか？`)) {
+      return;
+    }
+    shuffle(studied);
+    startSession({
+      mode: 'review',
+      title: '前倒し復習',
+      subtitle: `学習済み全カード ${studied.length}枚`,
+      queue: studied,
+    });
+    return;
+  }
+
+  // 学習済みもゼロ
+  showToast('まずは頻度順デッキで新規学習を始めましょう');
+}
+
+function startNewDeck() {
+  const wordCards = cards.filter(c => c.kind !== 'phrase');
+  const decks = groupByMiniDeck(wordCards);
+  const next = findNextDeck(decks);
+  if (!next) {
+    showToast('全てのデッキが習得済みです！');
+    return;
+  }
+  startSpecificDeck(next.num);
+}
+
+function startSpecificDeck(deckNum) {
+  const deckCards = cards.filter(c => c.tags.includes(`mini-deck:${String(deckNum).padStart(3,'0')}`));
+  if (deckCards.length === 0) return;
+  const notMastered = deckCards.filter(c => c.level < 7);
+  const queue = notMastered.length > 0 ? notMastered : deckCards;
+  shuffle(queue);
+  startSession({
+    mode: 'new-deck',
+    title: `ミニデッキ #${deckNum}`,
+    subtitle: `頻度 ${(deckNum-1)*100+1}〜${deckNum*100}位 · ${queue.length}語`,
+    queue,
+    deckNum,
+  });
+}
+
+function startFilteredReview() {
+  const filtered = applyFilters();
+  if (filtered.length === 0) {
+    showToast('条件に合うカードがありません');
+    return;
+  }
+  closeFilterModal();
+  shuffle(filtered);
+  startSession({
+    mode: 'filtered',
+    title: '前倒し復習',
+    subtitle: `${filtered.length}枚`,
+    queue: filtered,
+  });
+}
+
+// ===========================================================
+// FILTER MODAL
+// ===========================================================
+function openFilterModal() {
+  // Build level chips
+  const levelChips = document.getElementById('level-chips');
+  levelChips.innerHTML = '';
+  for (let i = 1; i <= 10; i++) {
+    const count = cards.filter(c => c.level === i && c.nextReviewAt).length;
+    if (count === 0 && i > 1) continue;
+    const btn = document.createElement('button');
+    btn.className = 'filter-chip';
+    btn.dataset.level = i;
+    btn.innerHTML = `Lv${i} <span style="opacity:0.6">(${count})</span>`;
+    btn.onclick = () => { btn.classList.toggle('active'); updateFilterCount(); };
+    levelChips.appendChild(btn);
+  }
+
+  // Deck chips - 学習開始済みのみ
+  const deckChips = document.getElementById('deck-chips');
+  deckChips.innerHTML = '';
+  const decks = groupByMiniDeck(cards.filter(c => c.kind !== 'phrase'));
+  decks.forEach(d => {
+    const startedCount = d.cards.filter(c => c.nextReviewAt).length;
+    if (startedCount === 0) return;
+    const btn = document.createElement('button');
+    btn.className = 'filter-chip';
+    btn.dataset.deck = d.num;
+    btn.innerHTML = `#${d.num} <span style="opacity:0.6">(${startedCount})</span>`;
+    btn.onclick = () => { btn.classList.toggle('active'); updateFilterCount(); };
+    deckChips.appendChild(btn);
+  });
+
+  // Tag chips
+  document.querySelectorAll('#tag-chips .filter-chip').forEach(btn => {
+    btn.onclick = () => { btn.classList.toggle('active'); updateFilterCount(); };
+  });
+
+  document.getElementById('filter-modal').classList.add('active');
+  updateFilterCount();
+}
+
+function closeFilterModal() {
+  document.getElementById('filter-modal').classList.remove('active');
+}
+
+function applyFilters() {
+  const activeLevels = [...document.querySelectorAll('#level-chips .filter-chip.active')].map(b => parseInt(b.dataset.level));
+  const activeDecks = [...document.querySelectorAll('#deck-chips .filter-chip.active')].map(b => parseInt(b.dataset.deck));
+  const activeTags = [...document.querySelectorAll('#tag-chips .filter-chip.active')].map(b => b.dataset.tag);
+
+  return cards.filter(c => {
+    if (!c.nextReviewAt) return false; // 未学習は除外
+    if (activeLevels.length && !activeLevels.includes(c.level)) return false;
+    if (activeDecks.length) {
+      const deckTag = c.tags.find(t => t.startsWith('mini-deck:'));
+      const num = deckTag ? parseInt(deckTag.split(':')[1]) : 0;
+      if (!activeDecks.includes(num)) return false;
+    }
+    if (activeTags.includes('struggling')) {
+      // 直近の3回のうち2回以上が4周目以上 = 苦戦
+      const recent = c.reviewHistory.slice(-3);
+      const struggles = recent.filter(r => r.roundsToCorrect >= 4).length;
+      if (struggles < 2) return false;
+    }
+    return true;
+  });
+}
+
+function updateFilterCount() {
+  const count = applyFilters().length;
+  document.getElementById('filter-count').textContent = count;
+}
+
+// ===========================================================
+// KINDLE IMPORT
+// ===========================================================
+function openImportModal() {
+  document.getElementById('import-modal').classList.add('active');
+}
+function closeImportModal() {
+  document.getElementById('import-modal').classList.remove('active');
+}
+
+async function runImport() {
+  const book = document.getElementById('import-book').value.trim();
+  const linesRaw = document.getElementById('import-text').value.trim();
+  const transRaw = document.getElementById('import-translations').value.trim();
+
+  if (!linesRaw) {
+    showToast('ハイライトを入力してください');
+    return;
+  }
+  const lines = linesRaw.split('\n').map(l => l.trim()).filter(Boolean);
+  const trans = transRaw.split('\n').map(l => l.trim());
+
+  // ============== APIモード ==============
+  if (Storage.isApiMode()) {
+    const cardsToAdd = lines.map((line, i) => ({
+      word: line,
+      translations: trans[i] ? [trans[i]] : ['(translation needed)'],
+    }));
+
+    try {
+      showToast('取り込み中...');
+      const result = await Storage.addCardsBulk(cardsToAdd, book);
+      if (result && result.ok) {
+        // ローカルカードもリロード
+        await loadCards();
+        closeImportModal();
+        showToast(`単語 ${result.added} 追加 / 既存に紐付け ${result.linked}`);
+        document.getElementById('import-text').value = '';
+        document.getElementById('import-translations').value = '';
+        renderHome();
+        return;
+      }
+      throw new Error('API returned no result');
+    } catch (err) {
+      showToast('API取り込み失敗: ' + err.message);
+      return;
+    }
+  }
+
+  // ============== ローカルモード ==============
+  let addedWord = 0, addedPhrase = 0, linkedExisting = 0;
+
+  lines.forEach((line, i) => {
+    const englishTr = trans[i] || '';
+    const wordCount = line.split(/\s+/).length;
+
+    if (wordCount <= 3) {
+      // 単語として扱う
+      const lemma = line.toLowerCase();
+      const existing = cards.find(c => c.kind !== 'phrase' && c.word.toLowerCase() === lemma);
+      if (existing) {
+        existing.encounters = (existing.encounters || 0) + 1;
+        if (book && !existing.tags.includes(`book:${book}`)) {
+          existing.tags.push(`book:${book}`);
+        }
+        if (book) {
+          existing.bookSentences = existing.bookSentences || [];
+          if (!existing.bookSentences.some(b => b.book === book && b.sentence === line)) {
+            existing.bookSentences.push({ book, sentence: line, addedAt: new Date().toISOString() });
+          }
+        }
+        existing.updatedAt = new Date().toISOString();
+        linkedExisting++;
+      } else {
+        const id = `apple_books_word_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+        cards.push({
+          id,
+          kind: 'word',
+          word: line,
+          translations: englishTr ? [englishTr] : ['（要確認）'],
+          pos: 'unknown',
+          rank: null,
+          tags: [
+            'kind:word',
+            'source:apple_books',
+            ...(book ? [`book:${book}`] : []),
+          ],
+          level: 1,
+          nextReviewAt: null,
+          encounters: 1,
+          reviewHistory: [],
+          bookSentences: book ? [{ book, sentence: line, addedAt: new Date().toISOString() }] : [],
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        });
+        addedWord++;
+      }
+    } else {
+      // 文章として扱う
+      const exists = cards.some(c => c.kind === 'phrase' && c.word === line);
+      if (exists) return;
+      const phraseCard = createPhraseCard({
+        word: line,
+        translations: englishTr ? [englishTr] : ['（要確認）'],
+        source: 'apple_books',
+        book,
+      });
+      cards.push(phraseCard);
+      addedPhrase++;
+    }
+  });
+
+  saveCards();
+  closeImportModal();
+  showToast(`単語 ${addedWord} 追加 / 文章 ${addedPhrase} 追加 / 既存単語に紐付け ${linkedExisting}`);
+
+  // フォームをリセット
+  document.getElementById('import-text').value = '';
+  document.getElementById('import-translations').value = '';
+
+  renderHome();
+}
+
+// ===========================================================
+// MANUAL PHRASE
+// ===========================================================
+function openAddPhraseModal() {
+  document.getElementById('phrase-modal').classList.add('active');
+}
+function closePhraseModal() {
+  document.getElementById('phrase-modal').classList.remove('active');
+}
+
+async function addManualPhrase() {
+  const fr = document.getElementById('phrase-fr').value.trim();
+  const enRaw = document.getElementById('phrase-en').value.trim();
+  if (!fr || !enRaw) {
+    showToast('両方入力してください');
+    return;
+  }
+  const en = enRaw.split('\n').map(s => s.trim()).filter(Boolean);
+
+  // APIモード
+  if (Storage.isApiMode()) {
+    try {
+      await Storage.addCard({
+        word: fr,
+        type: 'phrase',
+        translations: en,
+        pos: 'phrase',
+        tags: ['phrase-source:manual'],
+      });
+      await loadCards();
+      closePhraseModal();
+      showToast('文章を追加しました');
+      document.getElementById('phrase-fr').value = '';
+      document.getElementById('phrase-en').value = '';
+      renderHome();
+    } catch (err) {
+      showToast('追加失敗: ' + err.message);
+    }
+    return;
+  }
+
+  // ローカルモード
+  const exists = cards.some(c => c.kind === 'phrase' && c.word === fr);
+  if (exists) {
+    showToast('既に同じ文章が登録されています');
+    return;
+  }
+  cards.push(createPhraseCard({ word: fr, translations: en, source: 'manual' }));
+  saveCards();
+  closePhraseModal();
+  showToast('文章を追加しました');
+  document.getElementById('phrase-fr').value = '';
+  document.getElementById('phrase-en').value = '';
+  renderHome();
+}
+
+// ===========================================================
+// SETTINGS
+// ===========================================================
+function openSettingsModal() {
+  const apiUrl = Storage.getApiUrl();
+  const isApi = Storage.isApiMode();
+  document.getElementById('settings-api-url').value = apiUrl;
+  document.getElementById('settings-mode-info').innerHTML = isApi
+    ? `<strong style="color:var(--green)">同期モード</strong>（${escHtml(apiUrl)}）<br>すべてのデバイスで進捗が共有されます。`
+    : `<strong style="color:var(--text2)">ローカルモード</strong><br>このブラウザ内にのみデータが保存されます。`;
+  document.getElementById('settings-modal').classList.add('active');
+}
+function closeSettingsModal() {
+  document.getElementById('settings-modal').classList.remove('active');
+}
+
+async function saveSettings() {
+  const newUrl = document.getElementById('settings-api-url').value.trim();
+  const oldUrl = Storage.getApiUrl();
+
+  // ヘルスチェック
+  if (newUrl) {
+    try {
+      const r = await fetch(newUrl.replace(/\/$/, '') + '/health');
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    } catch (err) {
+      showToast('API URLに接続できません: ' + err.message);
+      return;
+    }
+  }
+
+  Storage.setApiUrl(newUrl);
+
+  if (newUrl !== oldUrl) {
+    showToast('設定を保存しました。データを再読み込みします...');
+    setTimeout(() => location.reload(), 1500);
+  } else {
+    closeSettingsModal();
+    showToast('保存しました');
+  }
+}
+
+function resetLocalData() {
+  if (!confirm('ローカルに保存されている全てのカードと進捗をリセットしますか？\nAPIモードの場合、サーバーのデータには影響しません。')) {
+    return;
+  }
+  localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem('francais_demo_setup_v4');
+  localStorage.removeItem('reviewDates');
+  showToast('リセットしました。再読み込みします...');
+  setTimeout(() => location.reload(), 1000);
+}
+
+function updateStorageModeDisplay() {
+  const el = document.getElementById('storage-mode-display');
+  if (!el) return;
+  el.textContent = Storage.isApiMode() ? '同期モード' : 'ローカルモード';
+  el.style.color = Storage.isApiMode() ? 'var(--green)' : 'var(--text2)';
+}
+
+// ===========================================================
+// HELPERS
+// ===========================================================
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ===========================================================
+// INIT
+// ===========================================================
+(async function init() {
+  await loadCards();
+  renderHome();
+  updateStorageModeDisplay();
+
+  // デモデータはローカルモードでのみ
+  if (!Storage.isApiMode() && !localStorage.getItem('francais_demo_setup_v4')) {
+    const ineffable = cards.find(c => c.word === 'ineffable');
+    if (ineffable) {
+      ineffable.bookSentences.push({
+        book: 'Le Petit Prince',
+        sentence: "Il y avait dans son rire quelque chose d'ineffable qui transformait toute la nuit en un océan d'étoiles invisibles, et c'est pour cela que je l'aimais tant.",
+        addedAt: new Date().toISOString(),
+      });
+      ineffable.encounters = 3;
+      ineffable.tags.push('book:Le Petit Prince');
+    }
+    const amour = cards.find(c => c.word === 'amour');
+    if (amour) {
+      amour.bookSentences.push({
+        book: "L'Étranger",
+        sentence: "Elle a voulu savoir alors si je l'aimais.",
+        addedAt: new Date().toISOString(),
+      });
+      amour.encounters = 5;
+      amour.tags.push("book:L'Étranger");
+    }
+
+    // いくつかのカードを学習済み状態にして、習得度別デッキを動作確認できるように
+    const masteryDistribution = [
+      { rank: [1, 5], level: 9 },
+      { rank: [6, 10], level: 8 },
+      { rank: [11, 15], level: 5 },
+      { rank: [16, 20], level: 4 },
+      { rank: [21, 25], level: 2 },
+      { rank: [26, 30], level: 1 },
+      { rank: [31, 35], level: 7 },
+      { rank: [36, 40], level: 10 },
+      { rank: [41, 45], level: 3 },
+      { rank: [46, 50], level: 6 },
+    ];
+    const now = Date.now();
+    masteryDistribution.forEach(({ rank, level }) => {
+      cards.forEach(c => {
+        if (c.kind !== 'phrase' && c.rank >= rank[0] && c.rank <= rank[1]) {
+          c.level = level;
+          const intervalMin = LEVEL_INTERVALS_MIN[level] || 60;
+          c.nextReviewAt = new Date(now + intervalMin * 60 * 1000).toISOString();
+          c.reviewHistory.push({ date: new Date().toISOString(), roundsToCorrect: level >= 7 ? 1 : level >= 4 ? 2 : 4 });
+        }
+      });
+    });
+
+    // 期限切れにいくつか
+    cards.forEach(c => {
+      if (c.rank >= 1 && c.rank <= 8 && c.kind !== 'phrase') {
+        c.nextReviewAt = new Date(now - 60*60*1000).toISOString();
+      }
+    });
+
+    saveCards();
+    localStorage.setItem('francais_demo_setup_v4', '1');
+    renderHome();
+  }
+})();
+</script>
+</body>
+</html>
