@@ -1441,7 +1441,7 @@ function renderPhraseDecks(phraseCards) {
 // ===== 頻度順デッキ（折りたたみ） =====
 function renderFrequencyDecks(wordCards) {
   const decks = groupByMiniDeck(wordCards);
-  const list = document.getElementById('deck-list');
+  const list = document.getElementById('frequency-deck-list');
   list.innerHTML = decks.map(d => {
     const startedCount = d.cards.filter(c => c.nextReviewAt).length;
     const masteredCount = d.cards.filter(c => c.level >= 7).length;
