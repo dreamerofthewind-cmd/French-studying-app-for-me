@@ -1059,9 +1059,14 @@ const Storage = {
   },
 
   // ============== LOAD CARDS ==============
-  async loadAll() {
+ async loadAll() {
     if (this.isApiMode()) {
-      const r = await fetch(this.getApiUrl() + '/api/cards');
+      // await を忘れずに！ そして最後に }); を付けて閉じます
+      const r = await fetch(this.getApiUrl() + '/api/cards', {
+        mode: 'cors',
+        credentials: 'omit'
+      }); 
+
       if (!r.ok) throw new Error(`API ${r.status}`);
       const data = await r.json();
       // APIから来るカードをUI用に正規化
@@ -1087,11 +1092,13 @@ const Storage = {
   // ============== SUBMIT REVIEW ==============
   async submitReview(cardId, roundsToCorrect) {
     if (this.isApiMode()) {
-      const r = await fetch(this.getApiUrl() + `/api/cards/${cardId}/review`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ roundsToCorrect }),
-      });
+     const r = await fetch(this.getApiUrl() + `/api/cards/${cardId}/review`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  mode: 'cors',         // 追加
+  credentials: 'omit',  // 追加
+  body: JSON.stringify({ roundsToCorrect }),
+});
       if (!r.ok) throw new Error(`Review API ${r.status}`);
       return await r.json();
     } else {
@@ -1104,10 +1111,12 @@ const Storage = {
   async addCardsBulk(cardsToAdd, book) {
     if (this.isApiMode()) {
       const r = await fetch(this.getApiUrl() + '/api/cards/bulk', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ cards: cardsToAdd, book }),
-      });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  mode: 'cors',         // 追加
+  credentials: 'omit',  // 追加
+  body: JSON.stringify({ cards: cardsToAdd, book }),
+});
       if (!r.ok) throw new Error(`Bulk API ${r.status}`);
       return await r.json();
     }
@@ -1117,11 +1126,13 @@ const Storage = {
   // ============== ADD SINGLE CARD ==============
   async addCard(card) {
     if (this.isApiMode()) {
-      const r = await fetch(this.getApiUrl() + '/api/cards', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(card),
-      });
+     const r = await fetch(this.getApiUrl() + '/api/cards', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  mode: 'cors',         // 追加
+  credentials: 'omit',  // 追加
+  body: JSON.stringify(card),
+});
       if (!r.ok) throw new Error(`Add API ${r.status}`);
       return await r.json();
     }
@@ -2177,15 +2188,18 @@ async function saveSettings() {
   const oldUrl = Storage.getApiUrl();
 
   // ヘルスチェック
-  if (newUrl) {
-    try {
-      const r = await fetch(newUrl.replace(/\/$/, '') + '/health');
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    } catch (err) {
-      showToast('API URLに接続できません: ' + err.message);
-      return;
-    }
+ if (newUrl) {
+  try {
+    const r = await fetch(newUrl.replace(/\/$/, '') + '/health', {
+      mode: 'cors',        // 追加
+      credentials: 'omit'  // 追加
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  } catch (err) {
+    showToast('API URLに接続できません: ' + err.message);
+    return;
   }
+}
 
   Storage.setApiUrl(newUrl);
 
