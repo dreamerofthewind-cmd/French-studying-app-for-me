@@ -1617,8 +1617,9 @@ function renderStudy() {
     </div>
   `;
 
-  setTimeout(() => playAudio(), 250);
+ playAudio();
 }
+  
 
 function posLabel(pos) {
   return { v: 'verb', n: 'noun', adj: 'adj', adv: 'adv', prep: 'prep', conj: 'conj', pron: 'pron', art: 'art', num: 'num' }[pos] || pos;
