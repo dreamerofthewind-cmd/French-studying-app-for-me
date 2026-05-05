@@ -1701,12 +1701,19 @@ async function answerCard(correct) {
   renderStudy();
 }
 
-function playAudio() {
+
+ function playAudio() {
   const card = currentSession?.queue[0];
   if (!card) return;
 
-  // R2の音声があればそれを優先
-  if (card.audioUrl) {
+  // iOS/スマホの時は、複雑な通信を避けて直接ブラウザ内蔵TTSを呼ぶ
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // スマホなら即座にブラウザ再生（これが一番確実）
+    playBrowserTTS(card.word);
+  } else if (card.audioUrl) {
+    // PCなどの場合は高品質なR2音声を試す
     try {
       const audio = new Audio(card.audioUrl);
       audio.playbackRate = 0.95;
@@ -1714,36 +1721,42 @@ function playAudio() {
         console.warn('Audio play failed, falling back to TTS:', err);
         playBrowserTTS(card.word);
       });
+      
+      // 再生アニメーション
       const btn = document.getElementById('audio-btn');
       if (btn) {
         btn.classList.remove('playing');
-        void btn.offsetWidth;
+        void btn.offsetWidth; // リセット用
         btn.classList.add('playing');
       }
-      return;
     } catch (e) {
       console.warn('Audio fallback to TTS:', e);
+      playBrowserTTS(card.word);
     }
+  } else {
+    // 音声URLがない場合
+    playBrowserTTS(card.word);
   }
-
-  // フォールバック: ブラウザ内蔵TTS
-  playBrowserTTS(card.word);
 }
 
 function playBrowserTTS(text) {
   if (!('speechSynthesis' in window)) return;
   speechSynthesis.cancel();
+  
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'fr-FR';
-  u.rate = 0.85;
+  u.lang = 'fr-FR'; // フランス語設定
+  u.rate = 0.85;   // 少しゆっくり
+  
   speechSynthesis.speak(u);
+
+  // ボタンのアニメーション
   const btn = document.getElementById('audio-btn');
   if (btn) {
     btn.classList.remove('playing');
-    void btn.offsetWidth;
+    void btn.offsetWidth; // リセット用
     btn.classList.add('playing');
   }
-}
+} 
 
 function finishSession() {
   const s = currentSession;
